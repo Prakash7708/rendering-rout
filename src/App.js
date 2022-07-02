@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//import 'App.css';
+//import "../public/assets.css"
+//import "../assets/sb-admin-2.min.css";
+
+import Topbar from "./Topbar";
+import Sidebar from "./Sidebar";
+//import Dashboard from "./Dashboard";
+import Users from "./Users";
+//import Viewuser from "./Viewuser";
+import {Link}from "react-router-dom";
+
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+import Createuser from "./Createuser";
+import New from "./NewUser";
+import Edit from "./Edit";
+
+
+function App(){
+
+  return(
+    
+<BrowserRouter>
+
+<div id="wrapper">
+  <Sidebar/>
+<div id="content-wrapper" className="d-flex flex-column">
+
+
+            <div id="content">
+            <Topbar/>
+            <div className="container-fluid">
+              
+                     <Routes>
+               
+                    {/* <Route path="/" element={<Dashboard/>} />  */}
+                    <Route path="/Users"  element={<Users/>}/>
+                    <Route path="Users/view/:id" element={<Edit/>}/> 
+                    <Route path="Users/create" element={<New/>}/>
+
+                    </Routes>
+                    
+              </div>
+            </div>
+   </div>
+
+    </div> 
+    
+    </BrowserRouter>
+
+  )
 }
 
 export default App;
